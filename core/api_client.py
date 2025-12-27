@@ -1,26 +1,38 @@
 import requests
+from utils.logger import Logger
+
+log=Logger().get_logger(__name__)
 
 class APIClient():
     def __init__(self,base_url,headers,timeout=10):
         self.base_url=base_url
         self.headers=headers
         self.timeout=timeout
-    
-    def get_request(self,endpoint,params=None):
-        """
-            Send an HTTP GET request to the specified API endpoint.
 
-            :param endpoint: API endpoint path 
-            :param params: Optional query parameters to be sent with the request
-            :return: requests.Response object containing status, headers, and body
-        """
+    def _request(self,method,endpoint,params=None,json=None):
         url=f"{self.base_url}{endpoint}"
 
-        recived_responce= requests.get(
+        log.info("Method Name: %s",method)
+
+        response = requests.request(
+            method=method,
             url=url,
             headers=self.headers,
+            json=json,
             params=params,
             timeout=self.timeout
         )
 
-        return recived_responce
+        return response
+    
+    def get_request(self, endpoint, params=None):
+        return self._request("GET", endpoint, params=params)
+
+    def post_request(self, endpoint, json=None):
+        return self._request("POST", endpoint, json=json)
+
+    def put_request(self, endpoint, json=None):
+        return self._request("PUT", endpoint, json=json)
+
+    def delete_request(self, endpoint):
+        return self._request("DELETE", endpoint)
