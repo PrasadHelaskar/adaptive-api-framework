@@ -1,4 +1,6 @@
 import json
+
+from core.endpoints import EndPoints
 from utils.logger import Logger
 
 log= Logger().get_logger(__name__)
@@ -12,7 +14,7 @@ def test_create_repo(api_client):
         "gitignore_template": "Python"
     }
 
-    reponse=api_client.post_request("/user/repos",json=payload)
+    reponse=api_client.post_request(EndPoints.CREATE_REPO,json=payload)
 
     assert reponse.status_code in [200,201,422]
 

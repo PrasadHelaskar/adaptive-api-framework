@@ -1,10 +1,12 @@
 import json
+
+from core.endpoints import EndPoints
 from utils.logger import Logger
 
 log=Logger().get_logger(__name__)
 
 def test_user_auth(api_client):
-    response=api_client.get_request("/user")
+    response=api_client.get_request(EndPoints.USER)
 
     assert response.status_code == 200, response.text
 

@@ -23,6 +23,8 @@ class APIClient():
             timeout=self.timeout
         )
 
+        log.info("Response Status Code: [%s]",response.status_code)
+
         return response
     
     def get_request(self, endpoint, params=None):
