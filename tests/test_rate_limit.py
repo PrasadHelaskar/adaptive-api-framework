@@ -1,12 +1,18 @@
+import pytest
 import json
+
+from core.endpoints import EndPoints
+from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
 log=Logger().get_logger(__name__)
 
+@pytest.mark.smoke
+@pytest.mark.auth
 def test_rate_limit(api_client):
-    response=api_client.get_request("/rate_limit")
+    response=api_client.get_request(EndPoints.RATE_LIMIT)
 
-    assert response.status_code == 200, response.text
+    status_validator(response=response,method="get")
 
     body=response.json()
     log.info("The Json Response:\n %s",json.dumps(body, indent=4))

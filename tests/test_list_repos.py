@@ -1,17 +1,21 @@
+import pytest
+from core.endpoints import EndPoints
+from core.validators.generic_validator import (status_validator,generaic_validation)
 from utils.logger import Logger
 
 log=Logger().get_logger(__name__)
 
-def test_rate_limit(api_client):
-    response=api_client.get_request("/user/repos")
+@pytest.mark.repo
+def test_list_repos(api_client):
+    response=api_client.get_request(EndPoints.USER_REPOS)
 
-    assert response.status_code == 200, response.text
+    status_validator(response=response,method="get")
 
     body=response.json()
     
     repo_name=[]
     for repo in body:
-        assert "name" in repo
+        generaic_validation(body,["name"])
         repo_name.append(repo["name"])
-    
-    log.info("The Json Response:\n %s",repo_name)
+
+    log.info("The Json Response (list of repos):\n %s",repo_name)

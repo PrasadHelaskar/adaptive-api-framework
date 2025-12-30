@@ -1,8 +1,13 @@
+import pytest
 import json
+
+from core.endpoints import EndPoints
+from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
 log= Logger().get_logger(__name__)
-
+@pytest.mark.repo
+@pytest.mark.smoke
 def test_create_repo(api_client):
     payload={
         "name": "api-automation-test-repo",
@@ -12,11 +17,11 @@ def test_create_repo(api_client):
         "gitignore_template": "Python"
     }
 
-    reponse=api_client.post_request("/user/repos",json=payload)
+    response=api_client.post_request(EndPoints.CREATE_REPO,json=payload)
 
-    assert reponse.status_code in [200,201,422]
+    status_validator(response,"post",[200,201,422])
 
-    if reponse.status_code == 200:
-        body=reponse.json()
+    if response.status_code == 200:
+        body=response.json()
 
         assert body["name"] == payload["name"]

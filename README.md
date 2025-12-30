@@ -99,9 +99,9 @@ The framework is designed to later support:
 
 Example environment variables:
 ```bash
-- BASE_URL=https://api.github.com
-- TIMEOUT=10
-- PAT_KEY=your_github_token_here
+BASE_URL= https://api.github.com
+TIMEOUT= 10
+PAT_KEY= your_github_token_here
 ```
 ---
 
