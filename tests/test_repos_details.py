@@ -1,11 +1,13 @@
 import json
-
+import pytest
 from core.endpoints import EndPoints
 from core.endpoint_resolver import Endpoint_Resolver
+from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
 log=Logger().get_logger(__name__)
 
+@pytest.mark.repo
 def test_repos_details(api_client):
     repo_name="automationExercies"
     
@@ -16,7 +18,7 @@ def test_repos_details(api_client):
     )
     response=api_client.get_request(endpoint)
 
-    assert response.status_code == 200, response.text
+    status_validator(response=response,method="get")
 
     body=response.json()
     

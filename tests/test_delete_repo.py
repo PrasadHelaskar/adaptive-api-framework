@@ -1,11 +1,12 @@
-import json
+import pytest
 
 from core.endpoints import EndPoints
 from core.endpoint_resolver import Endpoint_Resolver
+from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
 log= Logger().get_logger(__name__)
-
+@pytest.mark.repo
 def test_delete_repo(api_client):
     owner="PrasadHelaskar"
     repo="api-automation-test-repo"
@@ -18,4 +19,4 @@ def test_delete_repo(api_client):
 
     response=api_client.delete_request(endpoint)
 
-    assert response.status_code == 204
+    status_validator(response,"delete")

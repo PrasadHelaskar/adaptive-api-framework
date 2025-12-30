@@ -1,17 +1,19 @@
+import pytest
 import json
 
 from core.endpoints import EndPoints
+from core.validators.generic_validator import (generaic_validation,status_validator)
 from utils.logger import Logger
+ 
 
 log=Logger().get_logger(__name__)
-
+@pytest.mark.auth
 def test_user_auth(api_client):
     response=api_client.get_request(EndPoints.USER)
 
-    assert response.status_code == 200, response.text
+    status_validator(response=response,method="get")
 
     body=response.json()
     log.info("The Json Response:\n %s",json.dumps(body, indent=4))
     
-    assert "login" in body
-    assert "id" in body
+    generaic_validation(body,["login","id"])
