@@ -1,7 +1,7 @@
 import pytest
 import json
 
-from core.endpoints import EndPoints
+from core.endpoints import Endpoints
 from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
@@ -10,7 +10,7 @@ log=Logger().get_logger(__name__)
 @pytest.mark.smoke
 @pytest.mark.auth
 def test_rate_limit(api_client):
-    response=api_client.get_request(EndPoints.RATE_LIMIT)
+    response=api_client.get_request(Endpoints.RATE_LIMIT)
 
     status_validator(response=response,method="get")
 

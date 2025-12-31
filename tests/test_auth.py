@@ -1,7 +1,7 @@
 import pytest
 import json
 
-from core.endpoints import EndPoints
+from core.endpoints import Endpoints
 from core.validators.generic_validator import (generaic_validation,status_validator)
 from utils.logger import Logger
  
@@ -9,7 +9,7 @@ from utils.logger import Logger
 log=Logger().get_logger(__name__)
 @pytest.mark.auth
 def test_user_auth(api_client):
-    response=api_client.get_request(EndPoints.USER)
+    response=api_client.get_request(Endpoints.USER)
 
     status_validator(response=response,method="get")
 

@@ -1,6 +1,6 @@
 import json
 import pytest
-from core.endpoints import EndPoints
+from core.endpoints import Endpoints
 from core.endpoint_resolver import Endpoint_Resolver
 from core.validators.generic_validator import status_validator
 from utils.logger import Logger
@@ -12,7 +12,7 @@ def test_repos_details(api_client):
     repo_name="automationExercies"
     
     endpoint=Endpoint_Resolver.resolve(
-        EndPoints.GET_REPO_DETAILS,
+        Endpoints.GET_REPO_DETAILS,
         owner="PrasadHelaskar",
         repos=repo_name
     )
