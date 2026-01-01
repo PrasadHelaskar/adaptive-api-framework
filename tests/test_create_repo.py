@@ -1,7 +1,7 @@
 import pytest
 import json
 
-from core.endpoints import EndPoints
+from core.endpoints import Endpoints
 from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
@@ -17,7 +17,7 @@ def test_create_repo(api_client):
         "gitignore_template": "Python"
     }
 
-    response=api_client.post_request(EndPoints.CREATE_REPO,json=payload)
+    response=api_client.post_request(Endpoints.CREATE_REPO,json=payload)
 
     status_validator(response,"post",[200,201,422])
 
