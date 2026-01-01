@@ -14,3 +14,13 @@ def test_endpoint_resolver():
     )
 
     assert endpoint == f"/repos/{owner}/{repo}"
+
+def test_endpoint_resolver_missing():
+    owner="octocat"
+    repo="Hello-World"
+    endpoint=Endpoint_Resolver.resolve(
+        Endpoints.GET_REPO_DETAILS,
+        owner=owner,
+    )
+
+    assert endpoint == f"/repos/{owner}/{repo}"
