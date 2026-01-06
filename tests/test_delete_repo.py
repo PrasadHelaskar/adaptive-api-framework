@@ -1,7 +1,6 @@
 import pytest
 
 from core.endpoints import Endpoints
-from core.endpoint_resolver import Endpoint_Resolver
 from core.validators.generic_validator import status_validator
 from utils.logger import Logger
 
@@ -11,12 +10,6 @@ def test_delete_repo(api_client):
     owner="PrasadHelaskar"
     repo="api-automation-test-repo"
 
-    endpoint=Endpoint_Resolver.resolve(
-        Endpoints.DELETE_REPO,
-        owner=owner,
-        repo=repo
-    )
-
-    response=api_client.delete_request(endpoint)
+    response=api_client.delete_request(Endpoints.DELETE_REPO,owner=owner,repo=repo)
 
     status_validator(response,"delete")
