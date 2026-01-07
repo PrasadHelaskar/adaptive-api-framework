@@ -20,6 +20,19 @@ This framework is built around the following principles:
 * Framework failures should never mask API failures
 * Scalability without compromising readability
 
+### Reliability Philosophy
+
+This framework intentionally avoids automatic retry mechanisms.
+
+Rationale:
+- Retries can mask real backend or contract issues
+- Deterministic failures improve root cause analysis
+- Each failure must be actionable and explainable
+
+Retries may be suitable for resilience testing,
+but this framework prioritizes correctness, observability,
+and defect visibility.
+
 ---
 
 ## 🏷️ Tech Stack & Status
