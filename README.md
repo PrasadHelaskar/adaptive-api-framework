@@ -77,6 +77,9 @@ adaptive-api-framework/
 │   ├── config.py            # Application configuration
 │   └── path_resolver.py     # Reliable path resolution
 │
+├── auth/
+│   ├── generatic_auth.py    # Generic Auth Handler with abstract method
+│   ├── github_pat_handler.py # Specified Auth (Github PAT token)
 ├── tests/
 │   ├── conftest.py          # Pytest fixtures & setup
 │   └── test_*.py            # API test cases
