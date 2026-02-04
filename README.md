@@ -10,7 +10,7 @@ Rather than focusing on quick test scripts, this framework emphasizes **long-ter
 
 ---
 
-## 🧠 Design Philosophy
+## 🧠 Design Philosophy 
 
 This framework is built around the following principles:
 
