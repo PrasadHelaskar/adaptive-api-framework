@@ -10,7 +10,6 @@ class Endpoint_Resolver():
         # contract=endpoint_contract.value
 
         missing_param=[]
-        endpoint_contract=endpoint_contract.value
 
         for param in endpoint_contract.required_params:
             if param not in kwargs:

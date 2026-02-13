@@ -46,6 +46,7 @@ class APIClient:
         )
 
         log.info("Response Status Code: [%s]", response.status_code)
+        # log.info("Response Message: [%s]", response.text)
         return response
 
     def get_request(self, endpoint_contract, params=None,**kwargs):
