@@ -1,0 +1,50 @@
+name: Adaptive API Evening Run
+
+on:
+  schedule:
+    - cron: "30 12 * * *"
+  
+  workflow_dispatch:
+
+jobs:
+  self-heal-evening:
+    name: Evening Adaptive API Stability Run
+    runs-on: ubuntu-latest
+    env:
+      USER_NAME: ${{ secrets.USER_NAME }}
+      PAT_KEY: ${{ secrets.PAT_KEY }}
+      LOGGER_BASE_PATH: ${{ vars.LOGGER_BASE_PATH }}
+      BASE_URL: ${{ vars.BASE_URL }}
+      TIMEOUT: ${{ vars.TIMEOUT }}
+    
+    steps:
+      - name: Initial checkout
+        uses: actions/checkout@v4
+
+      - name: Python Set-up
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+        
+      - name: Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Prepare artifact directories
+        run: |
+          mkdir -p logs 
+          mkdir -p reports
+      
+      - name: Running The Regession Test Cases
+        run: |
+          PYTHONPATH=$PWD pytest -vv -m repo tests/
+
+      - name: Upload logs and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-api-artifacts
+          path: |
+            logs/
+            reports/
