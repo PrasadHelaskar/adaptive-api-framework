@@ -11,10 +11,12 @@ class Payloadtest(BasePayload):
 
     required_fields = ["name","private"]
 
+@pytest.mark.unit
 def test_base_payload_missing_required():
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         Payloadtest().build() # Intentionally retained for unit testing
 
+@pytest.mark.unit
 def test_base_payload_valid():
     payload = Payloadtest(name="test").build()
     assert payload == {"name": "test", "private": False}

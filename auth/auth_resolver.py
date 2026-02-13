@@ -5,7 +5,7 @@ class AuthResolver:
 
     @staticmethod
     def resolve(endpoint_contract):
-        if endpoint_contract.requires_auth:
+        if endpoint_contract.value.requires_auth:
             return GitHubPATAuth()
         else:
             return NoAuth()
