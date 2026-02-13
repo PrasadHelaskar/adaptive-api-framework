@@ -3,8 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
 ![Pytest](https://img.shields.io/badge/Pytest-Test%20Framework-green.svg)
 ![API Automation](https://img.shields.io/badge/API-Automation-orange.svg)
-![Phase](https://img.shields.io/badge/Phase-P1--S1%20Completed-brightgreen.svg)
-![Status](https://img.shields.io/badge/Status-Active%20Development-blue.svg)
 ![CI](https://github.com/PrasadHelaskar/adaptive-api-framework/actions/workflows/master-merge.yml/badge.svg)
 
 ### Python • Pytest • Scalable API Test Architecture
