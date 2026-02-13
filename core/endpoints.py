@@ -55,5 +55,5 @@ class Endpoints(Enum):
         method="GET",
         path="/rate_limit",
         required_params=[],
-        requires_auth=True
+        requires_auth=False
     )
