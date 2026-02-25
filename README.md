@@ -11,7 +11,7 @@ The **Adaptive API Automation Framework** is a **modular, extensible API test au
 
 Rather than focusing on quick test scripts, this framework emphasizes **long-term maintainability, clean architecture, and real-world API testing practices**.
 
-> This repository is developed in **private mode** and follows a **phased roadmap**, with documentation intentionally kept stable to reflect professional framework evolution.
+> This repository is developed in **private mode** and follows a **phased roadmap**, with documentation intentionally kept stable to reflect professional framework evolution. 
 
 ---
 
